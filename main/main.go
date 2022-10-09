@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
+	var Reset = "\033[0m"
+	//var Red = "\033[31m"
+	var Green = "\033[32m"
+
 	args := os.Args
 	if len(args) > 1 {
 		prog := args[1]
@@ -34,16 +38,19 @@ func main() {
 				secondValue := args[5]
 				if firstFlag == "-p" && len(firstValue) > 0 && secondFlag == "-c" && len(secondValue) > 0 {
 					res, e := modules.GetAllFilesForLocation(firstValue)
-					println(fmt.Sprintf("There are %d instances of this string", len(res)))
+					numStringInstances := 0
 					if e == nil {
 						for _, e := range res {
 							res, e := modules.GetLinesThatMatchFromFile(e, secondValue)
+							numStringInstances += len(res)
 							if e == nil {
 								for _, e := range res {
-									print(e)
+									print(Green + e + Reset)
 								}
 							}
 						}
+						println("")
+						println(fmt.Sprintf("There are %d instances of this string", numStringInstances))
 					}
 				} else {
 					printHelp()
