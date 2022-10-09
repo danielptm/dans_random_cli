@@ -2,6 +2,7 @@ package main
 
 import (
 	"dpt_cli/modules"
+	"fmt"
 	"os"
 )
 
@@ -26,8 +27,9 @@ func main() {
 				firstValue := args[3]
 				secondFlag := args[4]
 				secondValue := args[5]
-				if firstFlag == "-s" && len(firstValue) > 0 && secondFlag == "-c" && len(secondValue) > 0 {
+				if firstFlag == "-p" && len(firstValue) > 0 && secondFlag == "-c" && len(secondValue) > 0 {
 					res, e := modules.GetAllFilesForLocation(firstValue)
+					println(fmt.Sprintf("There are %d instances of this string", len(res)))
 					if e == nil {
 						for _, e := range res {
 							res, e := modules.GetLinesThatMatchFromFile(e, secondValue)
@@ -38,6 +40,8 @@ func main() {
 							}
 						}
 					}
+				} else {
+					printHelp()
 				}
 			}
 		}
@@ -52,7 +56,7 @@ func printHelp() {
 	println("")
 	println("Options:")
 	println("")
-	println("line-search -s <search-string> -p <absolute/path/to/folder/location>")
+	println("line-search -p <absolute/path/to/folder/location> -c <search-string>")
 	println("pretty-json -s <absolute-soure-file-path>")
 	println("")
 }
