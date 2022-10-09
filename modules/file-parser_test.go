@@ -1,6 +1,8 @@
 package modules
 
-import "testing"
+import (
+	"testing"
+)
 import "github.com/stretchr/testify/assert"
 
 func TestGetAllDirsForLocation(t *testing.T) {
@@ -32,6 +34,20 @@ func TestGetFileNameFromPath(t *testing.T) {
 	res := GetFileNameFromPath(path)
 	assert.Equal(t, "file5.txt", res)
 }
+
+func TestTesting(t *testing.T) {
+	x := "/Users/danieltuttle/Desktop/ex.json"
+	s := GetPrettyJson(x)
+	WriteFileWithContents(s, "/Users/danieltuttle/Desktop/ex2.json")
+}
+
+//func PrettyString(str string) (string, error) {
+//	var prettyJSON bytes.Buffer
+//	if err := json.Indent(&prettyJSON, []byte(str), "", "    "); err != nil {
+//		return "", err
+//	}
+//	return prettyJSON.String(), nil
+//}
 
 func contains(list []string, s string) bool {
 	for _, e := range list {

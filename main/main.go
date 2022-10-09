@@ -10,7 +10,7 @@ func main() {
 
 	if len(args) != 6 {
 		printHelp()
-	} else {
+	} else if len(args) == 6 {
 		prog := args[1]
 		firstFlag := args[2]
 		firstValue := args[3]
@@ -28,6 +28,9 @@ func main() {
 					}
 				}
 			}
+		} else if prog == "json-pretty" && firstFlag == "-s" && len(firstValue) > 0 && secondFlag == "-d" && len(secondValue) > 0 {
+			s := modules.GetPrettyJson(firstValue)
+			modules.WriteFileWithContents(s, secondValue)
 		} else {
 			printHelp()
 		}
