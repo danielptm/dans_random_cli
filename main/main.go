@@ -3,6 +3,7 @@ package main
 import (
 	"dpt_cli/modules"
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -15,8 +16,12 @@ func main() {
 				firstFlag := args[2]
 				firstValue := args[3]
 				if firstFlag == "-s" && len(firstValue) > 0 {
-					s := modules.GetPrettyJson(firstValue)
-					modules.WriteFileWithContents(s, firstValue)
+					s, e := modules.GetPrettyJson(firstValue)
+					if e == nil {
+						modules.WriteFileWithContents(s, firstValue)
+					} else {
+						log.Fatal("There was an error processing the JSON file: ", e)
+					}
 				}
 			}
 		}

@@ -6,13 +6,13 @@ import (
 	"io/ioutil"
 )
 
-func GetPrettyJson(path string) string {
+func GetPrettyJson(path string) (string, error) {
 	d, _ := ioutil.ReadFile(path)
 	x, e := prettyString(string(d))
 	if e != nil {
-		println("There was an error")
+		return "", e
 	}
-	return x
+	return x, nil
 }
 
 func prettyString(str string) (string, error) {
