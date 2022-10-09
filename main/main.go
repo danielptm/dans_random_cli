@@ -53,6 +53,6 @@ func printHelp() {
 	println("Options:")
 	println("")
 	println("line-search -s <search-string> -p <absolute/path/to/folder/location>")
-	println("pretty-json -s <absolute-soure-file-path> -d <absolute-destination-file-path>")
+	println("pretty-json -s <absolute-soure-file-path>")
 	println("")
 }
