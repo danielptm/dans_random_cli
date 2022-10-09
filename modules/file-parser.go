@@ -38,7 +38,7 @@ func GetAllFilesForLocation(ap string) ([]string, error) {
 
 func GetLinesThatMatchFromFile(path string, substr string) ([]string, error) {
 	dat, _ := os.ReadFile(path)
-	list := strings.Split(string(dat), "\\n")
+	list := strings.Split(string(dat), "\n")
 	fileName := GetFileNameFromPath(path)
 
 	lineNumber := 1
@@ -48,6 +48,7 @@ func GetLinesThatMatchFromFile(path string, substr string) ([]string, error) {
 			newS := "\n" + fileName + " : line number: " + fmt.Sprint(lineNumber) + "\n" + e + "\n"
 			res = append(res, newS)
 		}
+		lineNumber++
 	}
 
 	return res, nil

@@ -23,7 +23,7 @@ func TestGetAllDirsForLocation(t *testing.T) {
 
 func TestGetLinesThatMatchFromFile(t *testing.T) {
 	res, _ := GetLinesThatMatchFromFile("/Users/danieltuttle/projects/golang_projects/dpt_cli/test_resources/test_line_search/dir1/dir2/dir4/file5.txt", "file5")
-	e := "\nfile5.txt : line number: 1\nhello from file5\n\n"
+	e := "\nfile5.txt : line number: 1\nhello from file5\n"
 	assert.Equal(t, e, res[0])
 }
 
