@@ -9,7 +9,7 @@ import (
 
 func main() {
 	var Reset = "\033[0m"
-	//var Red = "\033[31m"
+	var Blue = "\033[34m"
 	var Green = "\033[32m"
 
 	args := os.Args
@@ -50,7 +50,8 @@ func main() {
 							}
 						}
 						println("")
-						println(fmt.Sprintf("There are %d instances of this string", numStringInstances))
+						println(fmt.Sprintf(Blue+"There are %d instances of this string"+Reset, numStringInstances))
+						println("")
 					}
 				} else {
 					printHelp()
