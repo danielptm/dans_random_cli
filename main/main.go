@@ -28,7 +28,7 @@ func main() {
 					}
 				}
 			}
-		} else if prog == "json-pretty" && firstFlag == "-s" && len(firstValue) > 0 && secondFlag == "-d" && len(secondValue) > 0 {
+		} else if prog == "pretty-json" && firstFlag == "-s" && len(firstValue) > 0 && secondFlag == "-d" && len(secondValue) > 0 {
 			s := modules.GetPrettyJson(firstValue)
 			modules.WriteFileWithContents(s, secondValue)
 		} else {
@@ -42,5 +42,6 @@ func printHelp() {
 	println("Dan's random cli")
 	println("Options:")
 	println("line-search -s <search-string> -p <absolute/path/to/folder/location>")
+	println("pretty-json -s <absolute-soure-file-path> -d <absolute-destination-file-path>")
 	println("")
 }
